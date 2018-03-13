@@ -32,11 +32,7 @@ type Message struct {
 }
 
 func main() {
-	// TODO: Parse the flags.
 	flag.Parse()
-
-	// TODO: Open a new connection using the value of the "dial" flag.
-	// TODO: Don't forget to check the error.
 
 	conn, err := net.Dial("tcp", *dialAddr)
 	if err != nil {
@@ -44,7 +40,6 @@ func main() {
 	}
 
 	s := bufio.NewScanner(os.Stdin)
-	// TODO: Create a json.Encoder writing into the connection you created before.
 	e := json.NewEncoder(conn)
 	for s.Scan() {
 		m := Message{Body: s.Text()}
